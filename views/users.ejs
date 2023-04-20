@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/chat.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <script src = "/javascripts/jquery.min.js"></script>
+</head>
+  <body>
+    
+<div class="chat-outer">
+<div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="logout-btn">
+            <a href="/logout" >Logout</a>
+        </div>
+        <div class="card chat-app">
+            <div id="plist" class="people-list" data-id="<%=userId %>">
+                <ul class="list-unstyled chat-list mb-0">
+                    <% usersList.forEach(function(user) { %>
+                    <li class="clearfix" data-id="<%=user.id %>">
+                        <img src="/images/avatar2.png" alt="avatar">
+                        <div class="about">
+                            <div class="name"><%= user.first_name %> <%= user.last_name %></div>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="chat" id="chat-box-msg" style="display: none;">
+                <div class="chat-header clearfix" id="chat-header-user">
+                    
+                </div>
+                <div class="chat-history">
+                    <ul class="m-b-0" id="message-container">
+                        
+                    </ul>
+                </div>
+                <div class="chat-message clearfix">
+                    <form id="message-form">
+                        <div class="input-group mb-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-send"></i></span>
+                            </div>
+                            <input type="text" id="message-input" class="form-control" placeholder="Enter text here..." autocomplete="off">                                    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src = "/socket.io/socket.io.js"></script>
+<script src = "/javascripts/moment.min.js"></script>
+<script src = "/javascripts/main.js"></script>
+ 
+  </body>
+</html>
